@@ -47,13 +47,13 @@ Go back to the Resource Group created above and click the 'Refresh' icon on the 
 
 ![Enrolled Azure Arc Server](/images/EnrolledMachine.png)
 
-### Give permissions to the Vault
+### Grant permissions to the Vault
 
 Now that the development server has a managed Identity, we can give permissions to the vault and the certificate.
 
 ### Install the Key Vault Extension
 
-Open a PowerShell window on the development server. Install the Azure Connected Machine library.
+While the Key Vault Extension is generally available, at the time of this writing, it does not appear in the Azure Portal. It must be installed via an ARM template or PowerShell. We will use PowerShell. Open a PowerShell window on the development server. Install the Azure Connected Machine PowerShell library.
 
 ```powershell
 install-module az.ConnectedMachine
@@ -85,9 +85,11 @@ $Settings = @{
   New-AzConnectedMachineExtension -ResourceGroupName $ResourceGroup -SubscriptionId $SubscriptionID -MachineName $ArcMachineName -Name "KeyVaultForWindows" -Location $Location -Publisher "Microsoft.Azure.KeyVault" -ExtensionType "KeyVaultForWindows" -Setting $Settings
 ```
 
-Replace the values in $ResourceGroup, $ArcMachineName, $Location, and $SubscriptionID with your values.
+Replace the values in $ResourceGroup (Your Arc Server resource group), $ArcMachineName, $Location, and $SubscriptionID with your values.
 
 Next, replace VAULTNAME with the vault name. You can get the name by going to the vault resource (begins with kv-) and see the Vault URL in the Overview.
+
+![Vault Name](images/vaultName.png)
 
 Then replace CERTNAME with the name of the CERT.
 
@@ -98,7 +100,10 @@ Run the script by pasting into a PowerShell window. The installation will take a
 If you decide to change the settings later, you can use the following PowerShell script. (You may need to install the Azure Connected Machine module again.) Remember to update $ResourceGroup, $ArcMachineName, and your $SubscriptionID.
 
 ```powershell
-  # install-module az.ConnectedMachine
+  # install-module az.ConnectedMachine if not installed
+
+  # Connect To Azure with the current account
+  Connect-AzAccount
 
   $ResourceGroup = "rgArcDevServers"
   $ArcMachineName = "dev-kinetic"
@@ -125,3 +130,11 @@ If you decide to change the settings later, you can use the following PowerShell
 ```
 
 Again, paste this updated script into a PowerShell window. This will also take a few minutes.
+
+Finally, let's check the server to see if the certificate was installed. Open the Certificates plug-in in the Management Console. Open the Personal Folder and click on Certificates.
+
+![Certificates Management Console](images/CertificatesMgmtConsole.png)
+
+Let's Encrypt certificates will be issued by R3. They come without a Friendly Name. Right-click the certificate and choose 'Properties', then fill in the Friendly Name and press 'OK'.
+
+![Friendly Name](images/FriendlyName.png)
