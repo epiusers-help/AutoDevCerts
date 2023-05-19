@@ -103,3 +103,5 @@ Then go to the IAM for the new Certificate and grant 'Key Vault Reader'
 ![Alt text](images/grantKeyVaultReaderToArcServer.png)
 
 Thirty (30) days before the certificate expires, this Azure Function will automatically renew it and place the updated version into the same Key Vault.
+
+[Return to the README](https://github.com/epiusers-help/AutoDevCerts/blob/main/README.md)

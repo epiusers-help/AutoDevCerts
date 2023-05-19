@@ -138,3 +138,5 @@ Finally, let's check the server to see if the certificate was installed. Open th
 Let's Encrypt certificates will be issued by R3. They come without a Friendly Name. Right-click the certificate and choose 'Properties', then fill in the Friendly Name and press 'OK'.
 
 ![Friendly Name](images/FriendlyName.png)
+
+[Return to the README](https://github.com/epiusers-help/AutoDevCerts/blob/main/README.md)

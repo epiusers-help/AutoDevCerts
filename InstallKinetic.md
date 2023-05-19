@@ -75,3 +75,5 @@ Data Discovery
 Enterprise Search
 
 ![Enterprise Search](images/enterpriseSearch.png)
+
+[Return to the README](https://github.com/epiusers-help/AutoDevCerts/blob/main/README.md)
