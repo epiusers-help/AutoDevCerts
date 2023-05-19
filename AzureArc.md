@@ -91,7 +91,7 @@ Next, replace VAULTNAME with the vault name. You can get the name by going to th
 
 ![Vault Name](images/vaultName.png)
 
-Then replace CERTNAME with the name of the CERT.
+Then replace CERTNAME with the name of the certificate as it appears in the Key Vault.
 
 In the $Settings, the certificateStoreLocation can be "My" for the Personal folder or "WEB" for the Web Server store. Both seem to work. The pollingIntervalInS is the number of seconds to check for a new certificate. Since by default, KeyVault-Acmebot will renew 30 days before expiration, checking once a day (86400) is probably good enough. Key Vault is billed by number of transactions, so no need to call too often.
 
