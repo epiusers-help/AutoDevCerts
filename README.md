@@ -1,12 +1,12 @@
 # AutoDevCerts
 
-Since the lifetime of certificates are going to get shorter and self-signed certificates are problematic, here is a way to use Let's Encrypt certificates that auto-renew and auto-install on internal resources.
+Since the lifetime of certificates are going to get shorter and self-signed certificates are problematic, here is a way to use Let's Encrypt certificates that auto-renew and auto-install on internal resources on internal resources that are not accessible from the Internet.
 
 ## Pre-Requisites
 
 - An Azure Account. Many cloud architects prefer to have a subscription for Dev, Test, and Production. Subscriptions become a security boundary that segments permissions.
-- A fully patched Windows System.
-- A .DEV domain. Before the function will work, the domain must be viewable through Google's DNS (8.8.8.8). Test by calling:
+- A fully patched Windows System on-prem.
+- A .DEV domain. Before the solution will work, the domain must be viewable through Google's DNS (8.8.8.8). Test by calling:
 
 ```bash
 nslookup -type=NS yourdomain.dev 8.8.8.8
@@ -14,21 +14,23 @@ nslookup -type=NS yourdomain.dev 8.8.8.8
 
 ## Managed Identities
 
-There will be a lot of references to Managed Identities in these instructions. What are they? They are basically service accounts where Azure manages the secrets on your behalf. The nice part about that is no secrets can be lost like API-KEYs and passwords since they are never transmitted.
+There will be a lot of references to Managed Identities in these instructions. What are they? They are basically service accounts where Azure manages the secrets on your behalf. The nice part about that is no secrets can be lost like API-KEYs and passwords since they are never transmitted and one never has to periodically change passwords.
 
 ## Key Vault-Acmebot Installation
+
+Here are the instructions to install the Key Vault Acmebot solution. This is the piece that calls Let's Encrypt to provision certificates and places them into an Azure Key Vault.
 
 [Key Vault Acmebot Instructions](KeyvaultAcmebot.md)
 
 ## Azure Arc Installation
 
-To connect an on-prem server to Azure Arc is free. Microsoft makes its money by the Azure services one might use with the machine. Azure Arc provides many other capabilities like providing the same access as the Windows Admin Center but from the cloud. You can check Event Logs, monitor CPU and Memory usage, even perform Windows Updates.
+Azure Arc provides the ability to retrieve a certificate from Azure Key Vault and install it onto your on-prem server. Connecting an on-prem server to Azure Arc is free. Microsoft makes its money by the Azure services one might use with the connection. Azure Arc provides many other capabilities like providing the same access as the Windows Admin Center one uses on-prem but from the cloud. You can check Event Logs, monitor CPU and Memory usage, even perform Windows Updates.
 
 [Azure Arc Instructions](AzureArc.md)
 
 ## Install Kinetic
 
-Finally, install Kinetic to test the installed certificate with all of the modules using secured connections.
+Finally, we install Kinetic to test the trusted certificate with all of the modules using secured connections.
 
 [Install Kinetic Instructions](InstallKinetic.md)
 
