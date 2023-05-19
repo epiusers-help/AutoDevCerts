@@ -40,4 +40,4 @@ Finally, we install Kinetic to test the trusted certificate with all of the modu
 
 As anyone who currently uses a purchased certificate knows, they just work. With the reduced lifecycle, we need ways to automate the process. Using tools like Azure Arc to pull certificates from a Key Vault is not going to reduce the work of the Infrastructure Team, but it is more secure. Even users who purchase wildcard certs only need to install them into the Key Vault and let Azure Arc do the rest.
 
-There is more room to further automate the described process. The KeyVault-Acmebot solution has just created a REST service. Azure Arc can run an on-boarding script where we can store many of these steps.
+There is room to further automate the described process. The KeyVault-Acmebot solution has just created a REST service. Azure Arc can run an on-boarding script where we can store many of these steps.
