@@ -2,6 +2,8 @@
 
 Since the lifetime of certificates are going to get shorter and self-signed certificates are problematic, here is a way to use Let's Encrypt certificates that auto-renew and auto-install on internal resources on internal resources that are not accessible from the Internet.
 
+[Cloud and Obnoxious: Provisioning TLS/SSL Certificates for on-prem resources](https://www.epiusers.help/t/cloud-and-obnoxious-provisioning-tls-ssl-certificates-for-on-prem-resources/102914)
+
 ## Pre-Requisites
 
 - An Azure Account. Many cloud architects prefer to have a subscription for Dev, Test, and Production. Subscriptions become a security boundary that segments permissions.
