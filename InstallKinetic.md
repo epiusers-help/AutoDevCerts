@@ -1,10 +1,10 @@
 # Install Kinetic
 
-We have a server with a valid TLS certificate. Let's install Kinetic.
+We have a server with a valid TLS certificate, now let's install Kinetic.
 
 ### Set DNS Suffix
 
-In my case, I am are using a .dev domain and not running DNS for it. IPCONFIG /ALL shows the DNS Suffix is mshome.net by default. To set it to the .dev domain, use the netdom command:
+Since I am are using a .dev domain but not running DNS for it. IPCONFIG /ALL shows the DNS Suffix is mshome.net by default. To set it to the .dev domain, use the netdom command:
 
 ```bash
 netdom computername dev-kinetic /add:dev-kinetic.teampti.dev
@@ -12,7 +12,7 @@ netdom computername dev-kinetic /add:dev-kinetic.teampti.dev
 netdom computername dev-kinetic /makeprimary:dev-kinetic.teampti.dev
 ```
 
-Reboot the computer to complete this operation. IPCONFIG /ALL will now show the new Primary Dns Suffix.
+Reboot the computer to complete this operation. IPCONFIG /ALL will now show the new Primary Dns Suffix as the .DEV domain.
 
 ### Kinetic Prerequisites
 
@@ -38,7 +38,7 @@ Open the web browser and enter the server's full address. In this case, 'https:/
 
 ### Add Kinetic Server
 
-Perform the usual steps in the installation guide. When you get to adding the Kinetic server. Make sure the name is the fully qualified server name, like dev-kinetic.teampti.dev. If it's just the server without the domain, go back and fix your DNS.
+Continue with the usual steps in the Kinetic installation guide. When you get to adding the Kinetic server, make sure the name is the fully qualified server name, like dev-kinetic.teampti.dev. If it's just the server without the domain, go back and fix your DNS.
 
 ![Kinetic Server](images/kineticServer.png)
 
@@ -56,7 +56,7 @@ Finish the standard installation per the guide. Finally, go to the browser:
 
 ### Other Modules
 
-In the Task Agent, one can validate the certificate.
+In the Task Agent, one can choose to validate the certificate.
 
 ![Task Agent](images/taskAgent.png)
 
